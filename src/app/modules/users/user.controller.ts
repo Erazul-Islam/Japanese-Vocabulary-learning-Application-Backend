@@ -31,11 +31,33 @@ const getAllProfile = async (req: Request, res: Response) => {
     }
 }
 
-const getUpdatedUserRole = async (req: Request, res: Response) => {
+const getUpdatedUserRoleAsAdmin = async (req: Request, res: Response) => {
     const userId = req.params.userId
 
     try {
-        const updatedUserRole = await userService.getUpdatedUserRole(userId)
+        const updatedUserRole = await userService.getUpdatedUserRoleIntoAdmin(userId)
+
+        if (!updatedUserRole) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "User role updated successfully",
+            data: updatedUserRole,
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
+const getUpdatedUserRoleAsUser = async (req: Request, res: Response) => {
+    const userId = req.params.adminId
+
+    try {
+        const updatedUserRole = await userService.getUpdatedUserRoleIntoUser(userId)
 
         if (!updatedUserRole) {
             return res.status(404).json({
@@ -114,5 +136,6 @@ export const userController = {
     getUpdatedUser,
     getAllProfile,
     deleteSingleUser,
-    getUpdatedUserRole
+    getUpdatedUserRoleAsAdmin,
+    getUpdatedUserRoleAsUser
 }

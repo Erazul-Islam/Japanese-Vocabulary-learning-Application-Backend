@@ -37,7 +37,7 @@ const getMyProfile = async (token: string) => {
     }
 };
 
-const getUpdatedUserRole = async (id: string) => {
+const getUpdatedUserRoleIntoAdmin = async (id: string) => {
     try {
 
         const user = await User.findById(id);
@@ -49,13 +49,30 @@ const getUpdatedUserRole = async (id: string) => {
             throw new Error('User not found');
         }
 
-        console.log(user.role   )
-        // If the user's role is already admin, prevent the update
-        if (user.role === 'ADMIN') {
-            throw new Error('Cannot change role of an admin');
-        }
+        console.log(user.role)
+        
         const updatedProduct = await User.findOneAndUpdate({ _id: id }, { role: 'ADMIN' }, { new: true })
-        console.log('service',updatedProduct)
+
+        return updatedProduct
+    } catch (error) {
+        console.log(error)
+    }
+}
+const getUpdatedUserRoleIntoUser = async (id: string) => {
+    try {
+
+        const user = await User.findById(id);
+
+
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+
+        
+        const updatedProduct = await User.findOneAndUpdate({ _id: id }, { role: 'USER' }, { new: true })
+
         return updatedProduct
     } catch (error) {
         console.log(error)
@@ -90,5 +107,6 @@ export const userService = {
     getUpdatedUser,
     getAllProfileFromDB,
     deletedFromDB,
-    getUpdatedUserRole
+    getUpdatedUserRoleIntoAdmin,
+    getUpdatedUserRoleIntoUser
 }

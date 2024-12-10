@@ -1,0 +1,38 @@
+[
+    {
+      "word": "こんにちは",
+      "pronunciation": "Konnichiwa",
+      "whenToSay": "Used for greeting during the day.",
+      "lessonNo": 1,
+      "adminEmail": "admin1@example.com"
+    },
+    {
+      "word": "ありがとう",
+      "pronunciation": "Arigatou",
+      "whenToSay": "Used to express gratitude.",
+      "lessonNo": 1,
+      "adminEmail": "admin1@example.com"
+    },
+    {
+      "word": "さようなら",
+      "pronunciation": "Sayounara",
+      "whenToSay": "Used when saying goodbye.",
+      "lessonNo": 1,
+      "adminEmail": "admin1@example.com"
+    },
+    {
+      "word": "おはようございます",
+      "pronunciation": "Ohayou Gozaimasu",
+      "whenToSay": "Used for greeting in the morning.",
+      "lessonNo": 2,
+      "adminEmail": "admin2@example.com"
+    },
+    {
+      "word": "こんばんは",
+      "pronunciation": "Konbanwa",
+      "whenToSay": "Used for greeting in the evening.",
+      "lessonNo": 2,
+      "adminEmail": "admin2@example.com"
+    }
+  ]
+  

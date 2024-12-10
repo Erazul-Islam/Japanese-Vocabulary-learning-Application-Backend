@@ -15,7 +15,9 @@ router.delete('/:userId', userController.deleteSingleUser)
 
 router.get('/all-profile', userController.getAllProfile)
 
-// router.patch('/:userId', userController.getUpdatedUserRole)
+router.put('/:userId', userController.getUpdatedUserRoleAsAdmin)
+
+router.put('/:adminId', userController.getUpdatedUserRoleAsUser)
 
 router.get('/me',  userController.getProfile)
 
