@@ -10,7 +10,7 @@ export interface TUser {
     photo : string
     createdAt: Date,
     updatedAt: Date,
-    role: 'admin' | 'user'
+    role: 'ADMIN' | 'USER'
 };
 
 

@@ -16,6 +16,7 @@ const userSchema = new Schema<TUser, UserModel>(
         role: {
             type: String,
             enum: ['USER', 'ADMIN'],
+            default : "USER"
         },
         email: {
             type: String,

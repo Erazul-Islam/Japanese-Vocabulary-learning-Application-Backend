@@ -38,7 +38,6 @@ const getMyProfile = async (token: string) => {
 };
 
 const getUpdatedUserRole = async (id: string) => {
-
     try {
 
         const user = await User.findById(id);
@@ -52,11 +51,9 @@ const getUpdatedUserRole = async (id: string) => {
 
         console.log(user.role   )
         // If the user's role is already admin, prevent the update
-        if (user.role === 'admin') {
+        if (user.role === 'ADMIN') {
             throw new Error('Cannot change role of an admin');
         }
-
-
         const updatedProduct = await User.findOneAndUpdate({ _id: id }, { role: 'ADMIN' }, { new: true })
         console.log('service',updatedProduct)
         return updatedProduct
