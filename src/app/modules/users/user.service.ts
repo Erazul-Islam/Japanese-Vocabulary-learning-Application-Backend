@@ -63,13 +63,9 @@ const getUpdatedUserRoleIntoUser = async (id: string) => {
 
         const user = await User.findById(id);
 
-
-
         if (!user) {
             throw new Error('User not found');
         }
-
-
         
         const updatedProduct = await User.findOneAndUpdate({ _id: id }, { role: 'USER' }, { new: true })
 

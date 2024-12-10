@@ -17,7 +17,7 @@ router.get('/all-profile', userController.getAllProfile)
 
 router.put('/:userId', userController.getUpdatedUserRoleAsAdmin)
 
-router.put('/:adminId', userController.getUpdatedUserRoleAsUser)
+router.patch('/:adminId', userController.getUpdatedUserRoleAsUser)
 
 router.get('/me',  userController.getProfile)
 
