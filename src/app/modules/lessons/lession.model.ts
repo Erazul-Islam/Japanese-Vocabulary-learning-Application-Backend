@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { TLession } from "./lesson.interface";
+import { JVocabularySchema } from "../vocabulary/vocabulary.model";
 
 
 
@@ -13,10 +14,11 @@ const JLessionSchema = new Schema<TLession>(
             type : Number,
             required : true
         },
-        description : {
-            type : String,
-            required : true
-        }
+        vocabularyCount : {
+            type : Number,
+            default : 0
+        },
+        vocabulary : [JVocabularySchema]
     },
     {
         timestamps: true,

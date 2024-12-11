@@ -3,16 +3,38 @@ import catchAsync from "../../utiils/catchAsync"
 import sendResponse from "../../utiils/sendResponse"
 import { vocabularyService } from "./vocabulary.service"
 
-const AddingVocabulary = catchAsync(async (req: Request, res: Response) => {
-    const result = await vocabularyService.addVocabulary(req.body)
-    sendResponse(res, {
-        statusCode: 200,
-        status: 200,
-        success: true,
-        message: 'Vocabulary added Successfully',
-        data: result
-    })
-})
+// const AddingVocabulary = catchAsync(async (req: Request, res: Response) => {
+//     const { lessonId } = req.params
+//     const { vocabulary } = req.body
+
+//     const word = vocabulary[0].word
+//     const pronunciation = vocabulary[1].pronunciation
+//     const whenToSay = vocabulary[2].whenToSay
+//     const lessonNo = vocabulary[3].lessonNo
+
+//     const token = req.headers.authorization?.split(" ")[1]
+
+//     if (!token) {
+//         return sendResponse(res, {
+//             success: false,
+//             status: 401,
+//             message: "Unauthorized",
+//             data: null,
+//             statusCode: 401,
+//         });
+//     }
+
+
+//     const result = await vocabularyService.addVocabulary(lessonId, word,pronunciation,whenToSay,lessonNo, token as string);
+
+//     sendResponse(res, {
+//         statusCode: 200,
+//         status: 200,
+//         success: true,
+//         message: 'Vocabulary added Successfully',
+//         data: result
+//     })
+// })
 
 const getAllVocabulary = async (req: Request, res: Response) => {
 
@@ -84,7 +106,7 @@ const deleteSingleVocabulary = async (req: Request, res: Response) => {
 }
 
 export const vocabularyController = {
-    AddingVocabulary,
+    // AddingVocabulary,
     getAllVocabulary,
     getUpdatedVocabulary,
     deleteSingleVocabulary,

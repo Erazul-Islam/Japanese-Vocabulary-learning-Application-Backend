@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { IVocabulary } from "./vocabulary.interface";
 
-const JVocabularySchema = new Schema<IVocabulary>(
+export const JVocabularySchema = new Schema<IVocabulary>(
     {
         word: {
             type : String,
@@ -20,6 +20,14 @@ const JVocabularySchema = new Schema<IVocabulary>(
             required : true
         },
         adminEmail : {
+            type : String,
+            required : true
+        },
+        userId : {
+            type : String,
+            required : true
+        },
+        userName : {
             type : String,
             required : true
         }

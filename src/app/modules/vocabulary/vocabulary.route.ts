@@ -9,11 +9,11 @@ import { vocabularyController } from './vocabulary.controller';
 
 const router = express.Router();
 
-router.post(
-    '/',
-    validateRequest(VocabularyValidation.VocabularyValidator), authValidation(USER_ROLE.ADMIN),
-    vocabularyController.AddingVocabulary,
-);
+// router.post(
+//     '/:lessonId/add-vocabulary',
+//      authValidation(USER_ROLE.ADMIN),
+//     vocabularyController.AddingVocabulary,
+// );
 router.put('/:vocabularyId', authValidation(USER_ROLE.ADMIN), vocabularyController.getUpdatedVocabulary)
 router.delete('/:vocabularyId',authValidation(USER_ROLE.ADMIN), vocabularyController.deleteSingleVocabulary)
 router.get('/', vocabularyController.getAllVocabulary)

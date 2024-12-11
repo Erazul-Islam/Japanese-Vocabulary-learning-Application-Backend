@@ -4,5 +4,7 @@ export interface IVocabulary {
     whenToSay: string; 
     lessonNo: number; 
     adminEmail: string; 
+    userId : string,
+    userName : string
   }
   

@@ -4,7 +4,11 @@ import sendResponse from "../../utiils/sendResponse"
 import { userService } from "./user.service"
 
 const signUpRegistration = catchAsync(async (req: Request, res: Response) => {
-    const result = await userService.signUp(req.body)
+
+    const result = await userService.signUp({
+        ...JSON.parse(req.body.data),
+        photo : req.file?.path
+    })
     sendResponse(res, {
         statusCode: 201,
         status: 201,

@@ -6,6 +6,7 @@ import config from "../../config";
 
 const signUp = async (payload: TUser) => {
     const result = await User.create(payload)
+
     return result
 }
 
