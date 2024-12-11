@@ -16,7 +16,6 @@ router.put('/:lessionId', authValidation(USER_ROLE.ADMIN), lessionController.get
 router.delete('/:lessionId',authValidation(USER_ROLE.ADMIN), lessionController.deleteSingleLession)
 router.get('/', lessionController.getAllLession)
 router.get('/:lessionId', lessionController.getSingleLession)
-
 router.post(
     '/:lessonId/add-vocabulary',
      authValidation(USER_ROLE.ADMIN),
@@ -25,5 +24,4 @@ router.post(
 
 router.delete('/:lessonId/vocabulary/:vocabularyId', lessionController.deleteVocabularyController)
 router.put('/:lessonId/vocabulary/:vocabularyId', lessionController.editVocabularyController)
-
 export const lessionRoute = router

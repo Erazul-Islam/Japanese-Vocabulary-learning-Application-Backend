@@ -15,13 +15,9 @@ router.post(
 router.delete('/:userId', userController.deleteSingleUser)
 
 router.get('/all-profile', userController.getAllProfile)
-
 router.put('/:userId', userController.getUpdatedUserRoleAsAdmin)
-
 router.patch('/:adminId', userController.getUpdatedUserRoleAsUser)
-
 router.get('/me',  userController.getProfile)
-
 router.put('/me',  userController.getUpdatedUser)
 
 export const userRoute = router

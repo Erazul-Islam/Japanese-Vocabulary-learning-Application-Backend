@@ -52,6 +52,7 @@ const getSingleLession = async (req: Request, res: Response) => {
 
 const getUpdatedLession = async (req: Request, res: Response) => {
     const LessionId = req.params.lessionId
+    console.log(LessionId)
     const updatedData = req.body
 
     try {
@@ -87,11 +88,10 @@ const deleteSingleLession = async (req: Request, res: Response) => {
 }
 
 const AddingVocabulary = catchAsync(async (req: Request, res: Response) => {
-    const { lessonId } = req.params
-
+    const  lessonId  = req.params.lessonId
+    console.log("lessonid",lessonId)
     const { vocabulary } = req.body
-
-
+    // console.log("vocabulary",vocabulary)
     const word = vocabulary[0].word
     const pronunciation = vocabulary[0].pronunciation
     const whenToSay = vocabulary[0].whenToSay
@@ -151,6 +151,7 @@ const deleteVocabularyController = catchAsync(async (req: Request, res: Response
 const editVocabularyController = catchAsync(async (req: Request, res: Response) => {
     const { lessonId, vocabularyId } = req.params
     const { vocabulary } = req.body
+    console.log(vocabulary)
 
 
     const word = vocabulary[0].word
