@@ -31,7 +31,7 @@ const getAllProfile = async (req: Request, res: Response) => {
     }
 }
 
-const getUpdatedUserRoleAsAdmin = async (req: Request, res: Response) => {
+const getUpdatedUserRoleAsAdmin = async (req: Request, res: Response)  => {
     const userId = req.params.userId
 
     try {
