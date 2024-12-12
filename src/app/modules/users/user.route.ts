@@ -1,6 +1,4 @@
 import express from 'express'
-import validateRequest from '../middleware/validateRequest';
-import { UserValidation } from './user.validation';
 import { userController } from './user.controller';
 import { multerUpload } from '../../config/multer.config';
 

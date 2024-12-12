@@ -7,6 +7,7 @@ import sendResponse from "../../utiils/sendResponse"
 
 
 const AddingLession = catchAsync(async (req: Request, res: Response) => {
+    
     const result = await lessionService.addLession(req.body)
     sendResponse(res, {
         statusCode: 200,
