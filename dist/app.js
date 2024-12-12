@@ -9,7 +9,6 @@ const route_1 = __importDefault(require("./app/routes/route"));
 const globalErrorHandler_1 = __importDefault(require("./app/modules/middleware/globalErrorHandler"));
 const notFound_1 = __importDefault(require("./app/modules/middleware/notFound"));
 const app = (0, express_1.default)();
-const port = 3000;
 const corsOptions = {
     origin: ['http://localhost:5173'],
     credentials: true,
