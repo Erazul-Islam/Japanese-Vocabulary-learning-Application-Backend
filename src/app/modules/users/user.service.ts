@@ -1,6 +1,6 @@
 import { TUser } from "./user.interface";
 import { User } from "./user.model";
-import jwt, { JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import config from "../../config";
 
 
@@ -21,12 +21,12 @@ const getMyProfile = async (token: string) => {
         const decoded = jwt.verify(token, config.jwtAccessSecret as string)
 
         if (typeof decoded === 'string' || !('email' in decoded)) {
-            throw new Error('Invalid token structure');
+            throw new Error('Invalid token structure')
         }
 
         const userEmail = decoded.email
 
-        const user = await User.findOne({ email: userEmail });
+        const user = await User.findOne({ email: userEmail })
 
         if (!user) {
             throw new Error('User not found');
@@ -41,11 +41,10 @@ const getMyProfile = async (token: string) => {
 const getUpdatedUserRoleIntoAdmin = async (id: string) => {
     try {
 
-        const user = await User.findById(id);
+        const user = await User.findById(id)
 
         console.log('user id',user)
 
-        // If user is not found, throw an error
         if (!user) {
             throw new Error('User not found');
         }

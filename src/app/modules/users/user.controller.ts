@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 import catchAsync from "../../utiils/catchAsync"
 import sendResponse from "../../utiils/sendResponse"
 import { userService } from "./user.service"
@@ -7,7 +7,7 @@ const signUpRegistration = catchAsync(async (req: Request, res: Response) => {
 
     const result = await userService.signUp({
         ...JSON.parse(req.body.data),
-        photo : req.file?.path
+        photo: req.file?.path
     })
     sendResponse(res, {
         statusCode: 201,
@@ -35,18 +35,14 @@ const getAllProfile = async (req: Request, res: Response) => {
     }
 }
 
-const getUpdatedUserRoleAsAdmin = async (req: Request, res: Response)  => {
+const getUpdatedUserRoleAsAdmin = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
     const userId = req.params.userId
 
     try {
+
         const updatedUserRole = await userService.getUpdatedUserRoleIntoAdmin(userId)
 
-        if (!updatedUserRole) {
-            return res.status(404).json({
-                success: false,
-                message: "User not found",
-            });
-        }
+       
 
         res.status(200).json({
             success: true,
@@ -54,21 +50,15 @@ const getUpdatedUserRoleAsAdmin = async (req: Request, res: Response)  => {
             data: updatedUserRole,
         })
     } catch (err) {
+        next(err)
         console.log(err)
     }
 }
-const getUpdatedUserRoleAsUser = async (req: Request, res: Response) => {
+const getUpdatedUserRoleAsUser = async (req: Request, res: Response) : Promise<void> => {
     const userId = req.params.adminId
 
     try {
         const updatedUserRole = await userService.getUpdatedUserRoleIntoUser(userId)
-
-        if (!updatedUserRole) {
-            return res.status(404).json({
-                success: false,
-                message: "User not found",
-            });
-        }
 
         res.status(200).json({
             success: true,

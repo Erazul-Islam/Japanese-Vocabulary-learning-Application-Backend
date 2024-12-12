@@ -32,13 +32,6 @@ const userSchema = new Schema<TUser, UserModel>(
     },
 );
 
-// userSchema.set('toJSON', {
-//     transform: (doc, ret, options) => {
-//         delete ret.password;
-//         return ret;
-//     }
-// })
-
 userSchema.pre('save', async function (next) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const user = this; // doc
@@ -51,11 +44,6 @@ userSchema.pre('save', async function (next) {
 
     next();
 });
-
-// userSchema.post('save', function (doc, next) {
-//     doc.password = '';
-//     next();
-// });
 
 userSchema.statics.isUSerExistByCustomEmial = async function (email: string) {
     return await User.findOne({ email }).select('+password')
